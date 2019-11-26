@@ -13,8 +13,8 @@ var d string = "string2"
 // e := 2
 
 func variableZero() {
-	var a string
-	var b int
+	var a string 
+	var b int 
 	fmt.Printf("%d %q\n", a, b)
 }
 
