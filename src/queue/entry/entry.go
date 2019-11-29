@@ -1,8 +1,8 @@
 package main
 
 import (
-	".."
 	"fmt"
+	"go_learning/src/queue"
 )
 
 func main() {
@@ -16,4 +16,6 @@ func main() {
 	fmt.Print(q.IsEmpty())
 	fmt.Print(q.Pop())
 	fmt.Print(q.IsEmpty())
+	q.Push("吃饭")
+	fmt.Println(q.Pop())
 }

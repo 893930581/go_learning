@@ -1,6 +1,9 @@
 package main
-import ".."
-import "fmt"
+
+import (
+	"fmt"
+	"go_learning/src/tree"
+)
 
 type myTreeNode struct{
 	node *tree.TreeNode
@@ -41,5 +44,8 @@ func main() {
 
 	myRoot := myTreeNode{&root}
 	myRoot.postOrderTrverse()
+	root.Ftverse(func(node *tree.TreeNode){
+		fmt.Println("回调函数",node.Value)
+	})
 }
 
