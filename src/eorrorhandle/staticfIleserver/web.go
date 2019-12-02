@@ -37,7 +37,7 @@ func errWraper(handler appHandler) func(writer http.ResponseWriter,request *http
 			switch {
 			case os.IsNotExist(err):
 				code = http.StatusNotFound
-			case os.IsNotExist(err):
+			case os.IsPermission(err):
 				code = http.StatusForbidden
 			default:
 				code = http.StatusInternalServerError

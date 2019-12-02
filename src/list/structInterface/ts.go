@@ -25,4 +25,8 @@ func main() {
 	fmt.Printf("%T",capMan)
 	fmt.Printf("%T",capMan2)
 	capMan.sayHello()
+
+	var a rune = '唉'
+	var b byte = 'a'
+	fmt.Println(a,b)
 }
