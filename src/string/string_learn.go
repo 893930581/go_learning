@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
 func main(){
 	var str string = "innoweb.com我"
+	fmt.Println("字符串长度。")
 	fmt.Println(len(str))
+	fmt.Println(len([]rune(str)))
 
 	fmt.Println("字符串切割")
 	str2 := str[0:7]
@@ -23,7 +26,25 @@ func main(){
 	fmt.Println("是否包含字串")
 	fmt.Println(strings.Contains(str,"inno"))
 	fmt.Println(strings.Contains(str,"l n"))
-	fmt.Println(strings.Count("cheese", "ee"))
+	fmt.Println(strings.Count("cheeseeee", "ee"))
 	fmt.Println(strings.Count("fivevev", "vev"))
 	// Count 是计算子串在字符串中出现的无重叠的次数
+
+	fmt.Println(strings.ContainsAny("infailurex", "in"))
+	fmt.Println(strings.Split("love,love",""))
+	fmt.Println(strings.Split("love love love"," "))
+	fmt.Println(strings.Split("a,b,c,d,e",","))
+	fmt.Println(strings.Fields("sdad"))
+
+	fmt.Println(strings.Join(strings.Split("a,b,c,d,e",","),""))
+
+	var a string = "!!@@$$  "
+	fmt.Println(strings.Trim(a,"! "))
+	fmt.Println(strings.TrimLeft(a,"!@"))
+	fmt.Println(strings.TrimRight(a,"$"))
+	fmt.Println(strings.TrimPrefix(a,"$$"))
+
+	fg := strconv.Itoa(21313)
+	fmt.Println(fg)
+
 }

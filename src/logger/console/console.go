@@ -1,63 +1,52 @@
 package mylogger
 
-import (
-	"fmt"
-	"time"
-)
+import "os"
 
-type Logger struct {
+type ConsoleLogger struct {
 	level logLevel
 }
 
-func NewLogger(loglev string) (Logger) {
+func NewConsoleLogger(loglev string) (ConsoleLogger) {
 	if lv,err := ConvertStrLevel(loglev); err!=nil{
 		panic(err)
 	}else{
-		return Logger{lv}
+		return ConsoleLogger{lv}
 	}
 }
 
 
-func log(level logLevel,format string,a ...interface{}) {
-	msg := fmt.Sprintf(format,a...)
-	now := time.Now()
-	funcName, fileName, lineNum := getInfo(3)
-	eLevel := ConvertLevelStr(level)
-	fmt.Printf("[%s] [%v] [%s:%s:%d] %s\n",now.Format("2019-12-2 15:04:05"),eLevel,funcName, fileName, lineNum,msg)
-}
-
-func (l Logger) Debug(format string,a ...interface{}){
+func (l ConsoleLogger) Debug(format string,a ...interface{}){
 	if l.level <= DEBUG {
-		log(DEBUG,format,a...)
+		log(os.Stdout,DEBUG,format,a...)
 	}
 }
 
-func (l Logger) Trace(format string,a ...interface{}){
+func (l ConsoleLogger) Trace(format string,a ...interface{}){
 	if l.level <= TRACE {
-		log(TRACE,format,a...)
+		log(os.Stdout,TRACE,format,a...)
 	}
 }
 
-func (l Logger) Info(format string,a ...interface{}){
+func (l ConsoleLogger) Info(format string,a ...interface{}){
 	if l.level <= INFO {
-		log(INFO,format,a...)
+		log(os.Stdout,INFO,format,a...)
 	}
 }
 
-func (l Logger) Warning(format string,a ...interface{}){
+func (l ConsoleLogger) Warning(format string,a ...interface{}){
 	if l.level <= WARNING {
-		log(WARNING,format,a...)
+		log(os.Stdout,WARNING,format,a...)
 	}
 }
 
-func (l Logger) Error(format string,a ...interface{}){
+func (l ConsoleLogger) Error(format string,a ...interface{}){
 	if l.level <= ERROR {
-		log(ERROR,format,a...)
+		log(os.Stdout,ERROR,format,a...)
 	}
 }
 
-func (l Logger) Fatal(format string,a ...interface{}){
+func (l ConsoleLogger) Fatal(format string,a ...interface{}){
 	if l.level <= FATAL {
-		log(FATAL,format,a...)
+		log(os.Stdout,FATAL,format,a...)
 	}
 }

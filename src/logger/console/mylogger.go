@@ -3,10 +3,21 @@ package mylogger
 import (
 	"errors"
 	"fmt"
+	"io"
 	"path"
 	"runtime"
 	"strings"
+	"time"
 )
+
+type Logger interface {
+	Debug(format string,a ...interface{})
+	Trace(format string,a ...interface{})
+	Info(format string,a ...interface{})
+	Warning(format string,a ...interface{})
+	Error(format string,a ...interface{})
+	Fatal(format string,a ...interface{})
+}
 
 type logLevel uint16
 
@@ -68,4 +79,12 @@ func getInfo(skip int)(funcName,fileName string ,lineNum int){
 	funcName = runtime.FuncForPC(pc).Name()
 	fileName = path.Base(file)
 	return
+}
+
+func log(writer io.Writer,level logLevel,format string,a ...interface{}) {
+	msg := fmt.Sprintf(format,a...)
+	now := time.Now()
+	funcName, fileName, lineNum := getInfo(3)
+	eLevel := ConvertLevelStr(level)
+	fmt.Fprintf(writer,"[%s] [%v] [%s:%s:%d] %s\n",now.Format("2019-12-2 15:04:05"),eLevel,funcName, fileName, lineNum,msg)
 }
