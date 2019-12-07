@@ -65,7 +65,7 @@ func ReadFromFile(filename string, num int) ([]byte,error) {
 }
 
 func main(){
-	resp, err := http.Get("http://127.0.0.1:8888/getData")
+	resp, err := http.Get("http://127.0.0.1:3000/getData")
 	if err != nil {
 		panic(err)
 	}
