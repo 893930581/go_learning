@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func tryRecover() {
 	defer func() {
@@ -12,7 +14,7 @@ func tryRecover() {
 			panic(r)
 		}
 	}()
-
+	fmt.Errorf()
 	b := 0
 	a := 5/b
 	fmt.Print(a)
