@@ -69,6 +69,7 @@ func tryDefer2(){
 }
 
 func main() {
+	tryDefer()
 	b := []byte("jsioadj")
 	filePath := "C:\\GOPKG\\src\\go_learning\\src\\eorrorhandle\\test.txt"
 	writeIt(b,filePath)
